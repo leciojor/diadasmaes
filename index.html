@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Mamãe World 🌸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="gameContainer">
+    <div id="hud">
+      <div><div>MAMÃE</div><div id="scoreDisplay">000000</div></div>
+      <div style="text-align:center"><div>MUNDO</div><div>1-1</div></div>
+      <div style="text-align:right"><div>VIDAS</div><div id="vidasDisplay"></div></div>
+    </div>
+
+    <canvas id="gameCanvas" width="768" height="480"></canvas>
+
+    <div id="telaInicio">
+      <h1>🌸 SUPER<br>MAMÃE<br>WORLD 🌸</h1>
+      <p>← → mover &nbsp;|&nbsp; ↑ pular &nbsp;|&nbsp; B correr</p>
+      <p style="color:#ffee88;font-size:8px;line-height:2.4">
+        Colete 🍽️ arroz e feijão para o PODER ESTRELA!<br>
+        Evite as filha-koopas!
+      </p>
+      <button class="btn-principal" onclick="iniciarJogo()">▶ JOGAR!</button>
+      <div id="dicaMobile">Use os botões abaixo no celular!</div>
+    </div>
+
+    <div id="telaGameOver" style="display:none">
+      <h2>FIM DE JOGO</h2>
+      <p style="color:#aaa;font-size:9px;line-height:2">Pontuação: <span id="pontuacaoFinal">0</span></p>
+      <button class="btn-principal" onclick="iniciarJogo()">TENTAR DE NOVO</button>
+    </div>
+  </div>
+
+  <!-- WIN SCREEN — fora do gameContainer para ocupar a tela toda -->
+  <div id="telaVitoria" style="display:none">
+
+    <!-- Estrelas de fundo animadas -->
+    <div class="win-stars" id="winStars"></div>
+
+    <div class="win-content">
+      <h2 class="win-titulo">🌸 FELIZ DIA<br>DAS MÃES! 🌸</h2>
+      <div class="win-coracoes">💙 💙 💙 💙 💙</div>
+      <p class="win-msg">Te amamos muito, mama!</p>
+
+      <!-- Foto castelo (grande, destaque) -->
+      <div class="win-castle-wrap">
+        <div id="castlePhoto"></div>
+      </div>
+
+      <!-- Grade de fotos -->
+      <div class="faixa-fotos" id="faixaFotos"></div>
+
+      <p class="win-obrigada">Obrigada por tudo! ❤️</p>
+      <button class="btn-principal win-btn" onclick="iniciarJogo()">▶ JOGAR DE NOVO</button>
+    </div>
+  </div>
+
+  <div id="controles">
+    <div class="dpad">
+      <div class="btn-dir vazio"></div>
+      <div class="btn-dir" id="btn_cima"      ontouchstart="btnPress('cima')"     ontouchend="btnRelease('cima')"     onmousedown="btnPress('cima')"     onmouseup="btnRelease('cima')">▲</div>
+      <div class="btn-dir vazio"></div>
+      <div class="btn-dir" id="btn_esquerda"  ontouchstart="btnPress('esquerda')" ontouchend="btnRelease('esquerda')" onmousedown="btnPress('esquerda')" onmouseup="btnRelease('esquerda')">◀</div>
+      <div class="btn-dir vazio"></div>
+      <div class="btn-dir" id="btn_direita"   ontouchstart="btnPress('direita')"  ontouchend="btnRelease('direita')"  onmousedown="btnPress('direita')"  onmouseup="btnRelease('direita')">▶</div>
+      <div class="btn-dir vazio"></div>
+      <div class="btn-dir" id="btn_baixo"     ontouchstart="btnPress('baixo')"    ontouchend="btnRelease('baixo')"    onmousedown="btnPress('baixo')"    onmouseup="btnRelease('baixo')">▼</div>
+      <div class="btn-dir vazio"></div>
+    </div>
+    <div class="btns-acao">
+      <div class="btn-acao btn-correr" ontouchstart="btnPress('correr')" ontouchend="btnRelease('correr')" onmousedown="btnPress('correr')" onmouseup="btnRelease('correr')">B<br>CORRER</div>
+      <div class="btn-acao btn-pular"  ontouchstart="btnPress('pular')"  ontouchend="btnRelease('pular')"  onmousedown="btnPress('pular')"  onmouseup="btnRelease('pular')">A<br>PULAR</div>
+    </div>
+  </div>
+
+  <audio id="musicaFundo" loop><!-- <source src="mario.mp3" type="audio/mpeg"> --></audio>
+  <audio id="musicaVitoria"><!-- <source src="vitoria.mp3" type="audio/mpeg"> --></audio>
+
+  <script src="game.js"></script>
+</body>
+</html>
